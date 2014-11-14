@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app='aboutConfig' ng-csp>
+
+<head>
+    <title>about:fxos-config</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+
+
+    <!-- l20n
+        <script src="bower_components/l20n/l20n.js"></script>
+    -->
+
+    <!-- angular-->
+        <script src="/bower_components/angular/angular.js"></script>
+        <link rel="stylesheet" type="text/css" href="/bower_components/angular/angular-csp.css">
+        <script src="/js/settings_ctrl.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/appbar.css"><!-- can't really use gaia-components or brick, because certified apps are not allowed to do inline styles :-( -->
+</head>
+
+<body ng-controller="SettingsCtrl">
+    <section id="appbar">
+        <button id="backbutton" ng-show="editing" ng-click="editCancel()"></button>
+        <h1 id="appbartitle">about:fxos-config</h1>
+        <button id="savebutton" ng-show="allSettings && !editing" ng-click="saveSettings()"></button>
+        <!--<button id="reloadbutton"  ng-click="loadSettings()"></button>-->
+    </section>
+    <section id="appcontent">
+                <section ng-show="allSettings && !editing" id="tableview">
+                    <input ng-model="searchText" type="text" placeholder="Filter...">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Settings Key</th>
+                            <th>Settings Value</th>
+                        </tr>
+                        </thead>
+                        <tbody ng-repeat="(key, value) in allSettings | settingsfilter:searchText ">
+                        <tr ng-click="viewEdit(key)">
+                            <td>{{key}}</td>
+                            <td class="settingsvalue">{{value}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section ng-show="editing" id="editview">
+                    <form>
+                        <p>Editing <code>{{editKey}}</code></p>
+                        <p ng-hide="editValueValid">Hint: You are changing the type of this value. Are you sure this is intentional?</p>
+                        <textarea ng-change="editValidate()" ng-model="editValue" ng-class="{ invalid: !editValueValid }">
+                        </textarea><br>
+
+                        <input type="button" value="Cancel" ng-click="editCancel()">
+                        <input type="submit" value="Done" ng-click="editSubmit()">
+                    </form>
+                </section>
+                <section ng-hide="allSettings" id="warningview">
+                    <!-- Show something if setting sobject is empty (i.e. warning on initial state)
+
+                         Header and button are quotes from Limp Bizkit's "Break Stuff". Long warning
+                         text is from about:config on desktop as of November 2014.
+                     -->
+                    <div>
+                        <h1>You just might break something tonight!</h1>
+                        <p>Changing these advanced settings can be harmful to the stability, security and perforamnce of your phone. You should only continue of you are sure of what you are doing.</p>
+                        <br>
+                        <button ng-click="loadSettings()">Give me something to break!</button>
+                    </div>
+                </section>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+</body>
+        </html>

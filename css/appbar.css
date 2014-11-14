@@ -1,0 +1,75 @@
+/* buttons */
+
+#backbutton {
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+    font-weight: 500;
+}
+#backbutton:before {
+    content: '‹';
+}
+#savebutton:before {
+    content: '\1F4BE'; /* floppy disk (U+1F4BE) */
+}
+#reloadbutton:before {
+    content: '\27F3'; /* clockwise gapped circle arrow (U+27F3) */
+}
+
+
+/* bar */
+
+#appbar > h1 {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    margin: 0;
+}
+#appbar {
+    background: #fff;
+    display: flex;
+    min-height: 50px;
+}
+#appbar > h1 {
+    display: -moz-box;
+    display: flex;
+    min-width: auto;
+    min-height: auto;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    flex: 1;
+    -moz-align-items: center;
+    align-items: center;
+    margin-right: 0px;
+    margin-left: 0px;
+    -moz-justify-content: center;
+    justify-content: center;
+    padding: 0 16px;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 26px;
+    color: #333;
+}
+#appbar > button {
+    color: #333;
+    display: block;
+    border: none;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    min-width: 50px;
+    text-decoration: none;
+    text-align: center;
+    background: none;
+    border-radius: 0;
+    transition: all 0s;
+    transition-delay: 300ms;
+}
+#appbar > button:active {
+    color: #333;
+    background: rgba(0,0,0,0.1);
+}

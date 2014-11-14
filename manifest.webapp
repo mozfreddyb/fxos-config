@@ -1,0 +1,29 @@
+{
+    "version": "0.10",
+    "name": "about:fxos-config",
+    "launch_path": "/index.html",
+    "description": "about:config for Firefox OS",
+    "icons": {
+    },
+    "developer": {
+        "name": "Frederik B",
+        "url": "https://github.com/freddyb"
+    },
+    "installs_allowed_from": ["*"],
+    "default_locale": "en",
+    "type": "certified",
+    "permissions": {
+        "settings": {
+            "access": "readwrite",
+            "description": "XXX"
+        }
+    },
+
+  "locales": [
+    "en-US",
+    "de-DE"
+  ],
+  "resources": [
+    "/locales/{{locale}}.l20n"
+  ]
+}
